@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head :: head"></head>
+    <body>
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        
+        <div class="container">
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Ejemplares</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Editorial</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">Modificar</th>
+                    </tr>
+                </thead>
+                <tbody th:each = "libro : ${libros}">
+                    <tr>
+                        <td scope="row" th:text="${libro.isbn}"></td>
+                        <td th:text="${libro.titulo}"></td>
+                        <td th:text="${libro.ejemplares}"></td>
+                        <td th:text="${libro.autor.nombre}"></td>
+                        <td th:text="${libro.editorial.nombre}"></td>
+                        <td>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fa-solid fa-pen"></i>Modificar</a>
+                        </td>
+                    </tr>
+                </tbody>    
+            </table>
+        </div>
+        
+        <div th:if="${Error != null}" class="card text-bg-danger mb-3" style="max-width: 18rem;">
+            
+                <div class="card-body">
+                    <h5 class="card-title">Error</h5>
+                    <p class="card-text" th:text="${Error}"></p>
+                </div>
+            </div>
+            
+            <div th:if="${Exito != null}" class="card text-bg-success mb-3" style="max-width: 18rem;">
+                
+                <div class="card-body">
+                    <h5 class="card-title">Exitos</h5>
+                    <p class="card-text" th:text="${Exito}"></p>
+                </div>
+            </div>
+        
+         <!-- Footer -->
+        <nav th:replace="/fragments/footer :: nav"></nav>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    </body>
+</html>
