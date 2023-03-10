@@ -2,8 +2,11 @@
 package com.egg.biblioteca.controladores;
 
 import com.egg.biblioteca.entidades.Usuario;
+import com.egg.biblioteca.excepciones.MiException;
 import com.egg.biblioteca.servicios.UsuarioServicio;
 import java.util.List;
+
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,11 +34,12 @@ public class AdminControlador {
         
         return "usuario_list";
     }
-    
+
     @GetMapping("/modificarRol/{id}")
-    public String cambiarRol(@PathVariable String id){
+    public String cambiarRol(@PathVariable String id, ModelMap modelo) {
+
         usuarioServicio.cambiarRol(id);
-        
+
         return "redirect:/admin/usuarios";
     }
     

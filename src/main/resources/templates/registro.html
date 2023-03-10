@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/fragments/head :: head"</head>
-    <body>
-        
-        <div class="container">
-   <form class="row g-3 col-4" th:action="@{/registro}" method="POST" enctype="multipart/form-data">
-       
-  <div class="col-12">
-    <label for="inputEmail4" class="form-label">Nombre de usuario</label>
-    <input type="text" class="form-control" name="nombre" th:value="${nombre}">
-  </div>
-  <div class="col-12">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" name="email" th:value="${email}">
-  </div>
-       <div class="col-12">
-           <label class="form-label">Subir imagen de perfil</label>
-           <input type="file" class="form-control" name="archivo">
-       </div>
-  <div class="col-12">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" th:value="${password}"> 
-  </div>
-    <div class="col-12">
-    <label for="inputPassword4" class="form-label">Repetir Password</label>
-    <input type="password" class="form-control" name="password2" th:value="${password2}">
-  </div>
-  
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Registrarte</button>
-  </div>
-</form>
-            <div th:if="${Error != null}" class="card text-bg-danger mb-3" style="max-width: 18rem;">
+<head th:replace="/fragments/head :: head"></head>
+<body>
 
-                <div class="card-body">
-                    <h5 class="card-title">Error</h5>
-                    <p class="card-text" th:text="${Error}"></p>
+<div class="container-fluid back">
+
+    <div class="content">
+
+        <div class="div-center">
+            <h3>Registro de usuario</h3>
+            <hr/>
+            <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" name="nombre" th:value="${nombre}">
                 </div>
+                <div class="form-group">
+                    <label>Email como usuario</label>
+                    <input type="email" class="form-control" name="email" th:value="${email}">
+                </div>
+                <div class="form-group">
+                    <label>Imagen para perfil</label>
+                    <input type="file" class="form-control" name="archivo">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" th:value="${password}">
+                </div>
+                <div class="form-group">
+                    <label>Repetir password</label>
+                    <input type="password" class="form-control" name="password2" th:value="${password2}">
+                </div>
+                <button type="submit" class="btn btn-warning">Registrarse</button>
+                <hr/>
+                <a type="button" class="btn btn-link" th:href="@{/inicio}">Volver al inicio</a>
+
+            </form>
+        </div>
+        <div th:if="${Error != null}" class="card text-bg-danger mb-3" style="max-width: 18rem;">
+
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text" th:text="${Error}"></p>
             </div>
+        </div>
 
-            <div th:if="${FREE != null}" class="card text-bg-success mb-3" style="max-width: 18rem;">
+        <div th:if="${FREE != null}" class="card text-bg-success mb-3" style="max-width: 18rem;">
 
-                <div class="card-body">
-                    <h5 class="card-title">Exitos</h5>
-                    <p class="card-text" th:text="${Exito}"></p>
-                </div>
-            </div>           
-            
+            <div class="card-body">
+                <h5 class="card-title">Exitos</h5>
+                <p class="card-text" th:text="${Exito}"></p>
+            </div>
+        </div>
+    </div>
 </div>
-       
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<!-- Footer -->
+<nav th:replace="/fragments/footer :: nav"></nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
 
-    </body>
+</body>
 </html>

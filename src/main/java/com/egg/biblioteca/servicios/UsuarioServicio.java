@@ -99,7 +99,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
     
     @Transactional
-    public void cambiarRol(String id){
+    public void cambiarRol(String id) {
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
     	
     	if(respuesta.isPresent()) {

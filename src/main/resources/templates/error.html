@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="/fragments/head :: head"></head>
+<head th:replace="/fragments/head :: head"></head>
 
-    <body style="background: url(https://eggeducacion.com/static/bg_home-2600dc8b76b198d706547ebb0d4118dc.png)">
-        <div class="container">
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                <div>
-                    <h4 class="alert-heading" th:text="'Error' + ${codigo}">Biblioteca Egg</h4>
-                    <p th:text="${mensaje}"></p>
-                </div>
-            </div> 
+<body>
+<div class="container-fluid">
+
+    <div class="d-flex p-2 d-flex justify-content-center align-items-center">
+        <div>
+            <img th:src="@{/images/404-error-person.png}" alt="PNG Image" height="550px"/>
         </div>
-        
-    </body>
+        <!--<div class="text-center">
+            <h1 class="light mb-3">Hola! esta es la <span class="bold">Biblioteca de Egg!</span></h1>
+
+            <a class="btn btn-warning fs-4" th:href="@{/login}" role="button">Ingresar</a>
+
+        </div>-->
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+            <div class="text-center">
+                <h4 class="bold mb-3 alert-heading fs-3" th:text="'Error ' + ${codigo}"></h4>
+                <p class="light fs-5" th:text="${mensaje}"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<nav th:replace="/fragments/footer :: nav"></nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
 </html>

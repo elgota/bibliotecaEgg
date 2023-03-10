@@ -14,32 +14,29 @@
                 <div class="text-center">
                     <h1 class="light mb-3">Hola! esta es la <span class="bold">Biblioteca de Egg!</span></h1>
 
-                    <a class="btn btn-warning fs-4" href="#" role="button">Ingresar</a>
+                    <a class="btn btn-warning fs-4 mb-3" th:href="@{/login}" role="button">Ingresar</a>
+                    <!-- Tarjetas de error y éxito -->
+
+                    <div th:if="${Error != null}" class="card text-bg-danger mb-3" style="max-width: 18rem;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${Error}"></p>
+                        </div>
+                    </div>
+
+                    <div th:if="${Exito != null}" class="card text-bg-success mb-3" style="max-width: 18rem;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Exitos</h5>
+                            <p class="card-text" th:text="${Exito}"></p>
+                        </div>
+                    </div>
 
                 </div>
 
             </div>
 
-
-
-        </div>
-        
-        <!-- Tarjetas de error y éxito -->
-        
-        <div th:if="${Error != null}" class="card text-bg-danger mb-3" style="max-width: 18rem;">
-
-            <div class="card-body">
-                <h5 class="card-title">Error</h5>
-                <p class="card-text" th:text="${Error}"></p>
-            </div>
-        </div>
-
-        <div th:if="${Exito != null}" class="card text-bg-success mb-3" style="max-width: 18rem;">
-
-            <div class="card-body">
-                <h5 class="card-title">Exitos</h5>
-                <p class="card-text" th:text="${Exito}"></p>
-            </div>
         </div>
         
         <!-- Footer -->

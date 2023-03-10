@@ -83,7 +83,17 @@ public class PortalControlador {
         modelo.put("usuario", usuario);
         return "usuario_modificar.html";
     }
-    
+
+
+    @GetMapping("/perfil/{id}")
+    public String actualizarUsuario(@PathVariable String id, ModelMap modelo) {
+        modelo.put("usuario", usuarioServicio.getOne(id));
+
+
+
+
+        return "usuario_modificar";
+    }
     
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
@@ -94,7 +104,7 @@ public class PortalControlador {
             usuarioServicio.actualizar(archivo, id, nombre, email, password, password2);
             modelo.put("Exito", "Usuario actualizado correctamente!");
                     
-             return "inicio.html";
+             return "panel";
              
         } catch (MiException ex) {
             

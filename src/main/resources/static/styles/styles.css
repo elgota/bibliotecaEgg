@@ -15,8 +15,6 @@ body {
 .profile-image {
 
     height: 20rem;
-    weight: 20rem;
-
 }
 
 th {
@@ -33,4 +31,9 @@ td {
 
 input {
     margin-bottom: 0.5rem;
+}
+
+.logo {
+    height: 10rem;
+    width: auto;
 }
